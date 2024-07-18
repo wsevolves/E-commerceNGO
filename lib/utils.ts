@@ -3,7 +3,7 @@ export const categoryMenuList = [
     id: 1,
     title: "NGO1",
     src: "/NGo1.jpg",
-    href: "/shop/smart-phones"
+    href: "/shop/NGODarpan"
   },
   {
     id: 2,

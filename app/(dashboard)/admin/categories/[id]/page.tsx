@@ -18,6 +18,7 @@ const DashboardSingleCategory = ({
   });
   const router = useRouter();
 
+
   const deleteCategory = async () => {
     const requestOptions = {
       method: "DELETE",
@@ -66,7 +67,6 @@ const DashboardSingleCategory = ({
   };
 
   useEffect(() => {
-    // sending API request for getting single categroy
     fetch(`http://localhost:3001/api/categories/${id}`)
       .then((res) => {
         return res.json();
@@ -75,6 +75,7 @@ const DashboardSingleCategory = ({
         setCategoryInput({
           name: data?.name,
         });
+
       });
   }, [id]);
 

@@ -90,7 +90,7 @@ const Header = () => {
         <div className="flex justify-between h-32 bg-white items-center px-16 max-[1320px]:px-10  max-w-screen-2xl mx-auto max-[400px]:px-5">
           <Link href="/">
             <Image
-              src="/logo v1.png"
+              src="/LogoNho2.png"
               width={130}
               height={130}
               alt="singitronic logo"
@@ -102,7 +102,7 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="w-10">
                 <Image
-                  src="/randomuser.jpg"
+                  src="/ProfileImg.png"
                   alt="random profile photo"
                   width={30}
                   height={30}

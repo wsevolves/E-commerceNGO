@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
-import { FaSquareFacebook } from "react-icons/fa6";
+import { FaSquareFacebook, FaSquareWhatsapp } from "react-icons/fa6";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquarePinterest } from "react-icons/fa6";
 
@@ -61,26 +61,42 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
               ))}
             </div>
           </div>
+
           <div className="flex flex-col gap-y-7 text-black max-[500px]:text-center">
+          <h1 className="text-3xl">{product?.category?.name}</h1>
+          <h2 className="text-3xl">{product?.title}</h2>
+
             <SingleProductRating rating={product?.rating} />
-            <h1 className="text-3xl">{product?.title}</h1>
+
             <p className="text-xl font-semibold">${product?.price}</p>
             <StockAvailabillity stock={94} inStock={product?.inStock} />
-            <SingleProductDynamicFields product={product} />
+            {/* <SingleProductDynamicFields product={product} /> */}
+             <div className="text-lg flex gap-x-2">
+                <span>To Buy this:</span>
+                <div className="flex items-center gap-x-1 text-2xl">
+                  {/* <FaSquareFacebook />
+                  <FaSquareXTwitter />
+                  <FaSquarePinterest /> */}
+                  <FaSquareWhatsapp />
+                  <a href="https://wa.me/+917096201256">
+                  <span>Contact us : +91-7096201254</span>
+                  </a>
+                </div>
+              </div>
             <div className="flex flex-col gap-y-2 max-[500px]:items-center">
-              <AddToWishlistBtn product={product} slug={params.productSlug} />
-              <p className="text-lg">
+              {/* <AddToWishlistBtn product={product} slug={params.productSlug} /> */}
+              {/* <p className="text-lg">
                 SKU: <span className="ml-1">abccd-18</span>
-              </p>
-              <div className="text-lg flex gap-x-2">
+              </p> */}
+              {/* <div className="text-lg flex gap-x-2">
                 <span>Share:</span>
                 <div className="flex items-center gap-x-1 text-2xl">
                   <FaSquareFacebook />
                   <FaSquareXTwitter />
                   <FaSquarePinterest />
                 </div>
-              </div>
-              <div className="flex gap-x-2">
+              </div> */}
+              {/* <div className="flex gap-x-2">
                 <Image
                   src="/visa.svg"
                   width={50}
@@ -123,7 +139,7 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
                   alt="discover icon"
                   className="h-auto w-auto"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

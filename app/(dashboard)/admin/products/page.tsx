@@ -1,9 +1,9 @@
 "use client";
 import {
   CustomButton,
-  DashboardProductTable,
   DashboardSidebar,
 } from "@/components";
+import DashboardProductTable from "@/components/DashboardProductTable";
 import React from "react";
 
 const DashboardProducts = () => {
