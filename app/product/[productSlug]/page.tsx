@@ -45,7 +45,7 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
               width={500}
               height={500}
               alt="main image"
-              className="w-auto h-auto"
+              className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
             />
             <div className="flex justify-around mt-5 flex-wrap gap-y-1 max-[500px]:justify-center max-[500px]:gap-x-1">
               {images?.map((imageItem: ImageItem) => (
@@ -55,15 +55,18 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
                   width={100}
                   height={100}
                   alt="laptop image"
-                  className="w-auto h-auto"
+                  className="w-auto h-auto image-product"
                 />
               ))}
             </div>
           </div>
 
           <div className="flex flex-col gap-y-7 text-black max-[500px]:text-center">
-            <h1 className="text-3xl">{product?.category?.name}</h1>
-            <h2 className="text-3xl">{product?.title}</h2>
+            <h1 className="text-3xl">{product?.title}</h1>
+            <div>
+
+            <label>Sold by</label><h2 className="text-3xl">{product?.category?.name}</h2>
+            </div>
 
             <SingleProductRating rating={product?.rating} />
 
@@ -77,8 +80,7 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
                   <FaSquareXTwitter />
                   <FaSquarePinterest /> */}
                 <WhatsAppButton
-                  product={product}
-                // quantityCount={quantityCount}
+                  product={product}                // quantityCount={quantityCount}
                 />
                 {/* <FaSquareWhatsapp />
                   <a href="https://wa.me/+917096201256">

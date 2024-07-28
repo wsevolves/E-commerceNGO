@@ -79,7 +79,7 @@ const Header = () => {
           <Link href="/">
             <img src="/logoNho2.png" width={300} height={300} alt="singitronic logo" className="relative right-5 max-[1023px]:w-56" />
           </Link>
-          <SearchInput />
+          {/* <SearchInput /> */}
           {/* <div className="flex gap-x-10">
             <HeartElement wishQuantity={wishQuantity} />
             <CartElement />
