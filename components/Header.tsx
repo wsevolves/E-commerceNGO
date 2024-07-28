@@ -80,10 +80,10 @@ const Header = () => {
             <img src="/logoNho2.png" width={300} height={300} alt="singitronic logo" className="relative right-5 max-[1023px]:w-56" />
           </Link>
           <SearchInput />
-          <div className="flex gap-x-10">
+          {/* <div className="flex gap-x-10">
             <HeartElement wishQuantity={wishQuantity} />
             <CartElement />
-          </div>
+          </div> */}
         </div>
       )}
       {pathname.startsWith("/admin") === true && (

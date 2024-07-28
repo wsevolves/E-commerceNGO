@@ -6,6 +6,7 @@ import {
   SingleProductDynamicFields,
   AddToWishlistBtn,
 } from "@/components";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -20,13 +21,11 @@ interface ImageItem {
 }
 
 const SingleProductPage = async ({ params }: SingleProductPageProps) => {
-  // sending API request for a single product with a given product slug
   const data = await fetch(
     `http://localhost:3001/api/slugs/${params.productSlug}`
   );
   const product = await data.json();
 
-  // sending API request for more than 1 product image if it exists
   const imagesData = await fetch(
     `http://localhost:3001/api/images/${product.id}`
   );
@@ -63,26 +62,30 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
           </div>
 
           <div className="flex flex-col gap-y-7 text-black max-[500px]:text-center">
-          <h1 className="text-3xl">{product?.category?.name}</h1>
-          <h2 className="text-3xl">{product?.title}</h2>
+            <h1 className="text-3xl">{product?.category?.name}</h1>
+            <h2 className="text-3xl">{product?.title}</h2>
 
             <SingleProductRating rating={product?.rating} />
 
             <p className="text-xl font-semibold">${product?.price}</p>
             <StockAvailabillity stock={94} inStock={product?.inStock} />
             {/* <SingleProductDynamicFields product={product} /> */}
-             <div className="text-lg flex gap-x-2">
-                <span>To Buy this:</span>
-                <div className="flex items-center gap-x-1 text-2xl">
-                  {/* <FaSquareFacebook />
+            <div className="text-lg flex gap-x-2">
+              <span>To Buy this:</span>
+              <div className="flex items-center gap-x-1 text-2xl">
+                {/* <FaSquareFacebook />
                   <FaSquareXTwitter />
                   <FaSquarePinterest /> */}
-                  <FaSquareWhatsapp />
+                <WhatsAppButton
+                  product={product}
+                // quantityCount={quantityCount}
+                />
+                {/* <FaSquareWhatsapp />
                   <a href="https://wa.me/+917096201256">
                   <span>Contact us : +91-7096201254</span>
-                  </a>
-                </div>
+                  </a> */}
               </div>
+            </div>
             <div className="flex flex-col gap-y-2 max-[500px]:items-center">
               {/* <AddToWishlistBtn product={product} slug={params.productSlug} /> */}
               {/* <p className="text-lg">

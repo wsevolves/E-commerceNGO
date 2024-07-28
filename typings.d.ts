@@ -34,6 +34,7 @@ interface OtherImages {
 }
 
 interface Category {
+  [x: string]: string | StaticImport;
   id: string;
   name: string;
 }
