@@ -18,16 +18,16 @@ const IntroducingSection = () => {
   ];
 
   return (
-    <div className="pt-20 bg-gradient-to-r from-blue-500 via-teal-400 to-green-300">
+    <div className="pt-20 bg-gradient-to-r from-white">
       <div className="text-center flex flex-col gap-y-5 items-center">
-        <h2 className="text-white text-6xl font-extrabold text-center mb-2 max-md:text-5xl max-[480px]:text-3xl font-sans">
+        <h2 className="text-cyan-600 text-6xl font-extrabold text-center mb-2 max-md:text-5xl max-[480px]:text-3xl font-sans">
           INTRODUCING <span className="text-black">NGO</span><span className="text-yellow-500">PRODUCTS</span>
         </h2>
         <div>
-          <p className="text-white text-center text-2xl font-semibold max-md:text-xl max-[480px]:text-base font-serif">
+          <p className="text-cyan-600 text-center text-2xl font-semibold max-md:text-xl max-[480px]:text-base font-serif">
             Support our mission by purchasing these products.
           </p>
-          <p className="text-white text-center text-2xl font-semibold max-md:text-xl max-[480px]:text-base font-serif">
+          <p className="text-cyan-600 text-center text-2xl font-semibold max-md:text-xl max-[480px]:text-base font-serif">
             All proceeds go towards our cause.
           </p>
           <Link href="/shop" passHref>
@@ -50,7 +50,7 @@ const IntroducingSection = () => {
           >
             {products.map((product) => (
               <div key={product.id} className="flex justify-center">
-                <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                <div className="max-w-xs bg-white shadow-black rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
                   <div className="w-72 h-72">
                     <Image
                       src={product.src}
@@ -64,7 +64,7 @@ const IntroducingSection = () => {
                     <h3 className="text-black text-2xl font-bold mt-3 font-mono">
                       Product {product.id}
                     </h3>
-                    <p className="text-gray-700 text-lg font-sans">
+                    <p className="text-cyan-800 text-lg font-sans">
                       Description of product {product.id}.
                     </p>
                   </div>
@@ -78,7 +78,7 @@ const IntroducingSection = () => {
           <p className="text-2xl font-serif text-black">
             Our products are crafted with love and dedication. Each purchase you make contributes directly to our cause, helping us provide essential services and support to those in need.
           </p>
-          <p className="text-white text-1xl font-serif mt-4">
+          <p className="text-orange-600 text-1xl font-serif mt-4">
             From handcrafted items to sustainable goods, our product range is diverse and ethically produced. Your support not only brings joy to your life but also to the lives of many others.
           </p>
         </div>

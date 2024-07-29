@@ -13,9 +13,14 @@ interface DashboardSingleCategoryProps {
 const DashboardSingleCategory = ({
   params: { id },
 }: DashboardSingleCategoryProps) => {
-  const [categoryInput, setCategoryInput] = useState<{ name: string }>({
+  const [categoryInput, setCategoryInput] = useState({
     name: "",
+    description: "",
+    email: "",
+    phone: "",
+
   });
+
   const router = useRouter();
 
 
@@ -45,6 +50,10 @@ const DashboardSingleCategory = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: convertCategoryNameToURLFriendly(categoryInput.name),
+          description: convertCategoryNameToURLFriendly(categoryInput.description),
+          email: convertCategoryNameToURLFriendly(categoryInput.email),
+          phone: convertCategoryNameToURLFriendly(categoryInput.phone),
+
         }),
       };
       // sending API request for updating a category
@@ -74,6 +83,9 @@ const DashboardSingleCategory = ({
       .then((data) => {
         setCategoryInput({
           name: data?.name,
+          description: data?.description,
+          email: data?.email,
+          phone: data?.phone
         });
 
       });
@@ -95,6 +107,39 @@ const DashboardSingleCategory = ({
               value={formatCategoryName(categoryInput.name)}
               onChange={(e) =>
                 setCategoryInput({ ...categoryInput, name: e.target.value })
+              }
+            />
+            <div className="label">
+              <span className="label-text">Description:</span>
+            </div>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              value={formatCategoryName(categoryInput.description)}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, description: e.target.value })
+              }
+            />
+            <div className="label">
+              <span className="label-text">Category name:</span>
+            </div>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              value={formatCategoryName(categoryInput.email)}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, email: e.target.value })
+              }
+            />
+            <div className="label">
+              <span className="label-text">Phone:</span>
+            </div>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              value={formatCategoryName(categoryInput.phone)}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, phone: e.target.value })
               }
             />
           </label>

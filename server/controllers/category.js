@@ -3,12 +3,22 @@ const prisma = new PrismaClient();
 
 async function createCategory(request, response) {
   try {
-    const { name } = request.body;
+    const { name, description, email, phone } = request.body;
+
+    // Validate input data
+    if (!name || !description || !email || !phone) {
+      return response.status(400).json({ error: "All fields are required" });
+    }
+
     const category = await prisma.category.create({
       data: {
-        name,
+        name: name,
+        description: description,
+        email: email,
+        phone: phone,
       },
     });
+
     return response.status(201).json(category);
   } catch (error) {
     console.error("Error creating category:", error);
@@ -19,11 +29,16 @@ async function createCategory(request, response) {
 async function updateCategory(request, response) {
   try {
     const { id } = request.params;
-    const { name } = request.body;
+    const { name, description, email, phone } = request.body;
+
+    // Validate input data
+    if (!name || !description || !email || !phone) {
+      return response.status(400).json({ error: "All fields are required" });
+    }
 
     const existingCategory = await prisma.category.findUnique({
       where: {
-        id: id,
+        id: String(id),
       },
     });
 
@@ -36,7 +51,10 @@ async function updateCategory(request, response) {
         id: existingCategory.id,
       },
       data: {
-        name,
+        name: name,
+        description: description,
+        email: email,
+        phone: phone,
       },
     });
 
@@ -51,7 +69,7 @@ async function deleteCategory(request, response) {
     const { id } = request.params;
     await prisma.category.delete({
       where: {
-        id: id,
+        id: String(id),
       },
     });
     return response.status(204).send();
@@ -65,7 +83,7 @@ async function getCategory(request, response) {
   const { id } = request.params;
   const category = await prisma.category.findUnique({
     where: {
-      id: id,
+      id: String(id),
     },
   });
   if (!category) {

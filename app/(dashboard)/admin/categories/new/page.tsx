@@ -7,21 +7,35 @@ import { convertCategoryNameToURLFriendly } from "../../../../../utils/categoryF
 const DashboardNewCategoryPage = () => {
   const [categoryInput, setCategoryInput] = useState({
     name: "",
+    description: "",
+    email: "",
+    phone: "",
+
   });
+
 
   const addNewCategory = () => {
     if (categoryInput.name.length > 0) {
+      console.log(categoryInput)
       const requestOptions = {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: convertCategoryNameToURLFriendly(categoryInput.name),
+          description: convertCategoryNameToURLFriendly(categoryInput.description),
+          email: convertCategoryNameToURLFriendly(categoryInput.email),
+          phone: convertCategoryNameToURLFriendly(categoryInput.phone),
+
+
+
         }),
       };
       // sending API request for creating new cateogry
       fetch(`http://localhost:3001/api/categories`, requestOptions)
         .then((response) => {
+
           if (response.status === 201) {
+            console.log(response.json)
             return response.json();
           } else {
             throw Error("There was an error while creating category");
@@ -31,6 +45,9 @@ const DashboardNewCategoryPage = () => {
           toast.success("Category added successfully");
           setCategoryInput({
             name: "",
+            description: "",
+            email: "",
+            phone: ""
           });
         })
         .catch((error) => {
@@ -56,6 +73,39 @@ const DashboardNewCategoryPage = () => {
               value={categoryInput.name}
               onChange={(e) =>
                 setCategoryInput({ ...categoryInput, name: e.target.value })
+              }
+            />
+
+            <div className="label">
+              <span className="label-text"> Description:</span>
+            </div>
+            <textarea
+              className="textarea textarea-bordered h-24"
+              value={categoryInput.description}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, description: e.target.value })
+              }
+            ></textarea>
+            <div className="label">
+              <span className="label-text"> Email:</span>
+            </div>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              value={categoryInput.email}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, email: e.target.value })
+              }
+            />
+            <div className="label">
+              <span className="label-text"> Phone:</span>
+            </div>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              value={categoryInput.phone}
+              onChange={(e) =>
+                setCategoryInput({ ...categoryInput, phone: e.target.value })
               }
             />
           </label>

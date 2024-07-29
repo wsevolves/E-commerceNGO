@@ -1,13 +1,3 @@
-// *********************
-// Role of the component: Header component
-// Name of the component: Header.tsx
-// Developer: Aleksandar Kuzmanovic
-// Version: 1.0
-// Component call: <Header />
-// Input parameters: no input parameters
-// Output: Header component
-// *********************
-
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -15,18 +5,20 @@ import HeaderTop from "./HeaderTop";
 import Image from "next/image";
 import SearchInput from "./SearchInput";
 import Link from "next/link";
-import { FaBell } from "react-icons/fa6";
+import { FaBell, FaBars,} from "react-icons/fa6";
 
 import CartElement from "./CartElement";
 import HeartElement from "./HeartElement";
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useWishlistStore } from "@/app/_zustand/wishlistStore";
+import { FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const { wishlist, setWishlist, wishQuantity } = useWishlistStore();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     setTimeout(() => signOut(), 1000);
@@ -75,16 +67,26 @@ const Header = () => {
     <header className="bg-white">
       <HeaderTop />
       {pathname.startsWith("/admin") === false && (
-        <div className="h-32 bg-white flex items-center justify-between px-16 max-[1320px]:px-16 max-md:px-6 max-lg:flex-col max-lg:gap-y-7 max-lg:justify-center max-lg:h-60 max-w-screen-2xl mx-auto">
-          <Link href="/">
-            <img src="/logoNho2.png" width={300} height={300} alt="singitronic logo" className="relative right-5 max-[1023px]:w-56" />
-          </Link>
-          {/* <SearchInput /> */}
-          {/* <div className="flex gap-x-10">
-            <HeartElement wishQuantity={wishQuantity} />
-            <CartElement />
-          </div> */}
-        </div>
+        <div className="h-32 bg-white flex items-center justify-between px-16 max-[1320px]:px-16 max-md:px-6 max-lg:flex-col max-lg:gap-y-7 max-lg:justify-center max-lg:h-60 max-w-screen-2xl mx-auto relative">
+        <Link href="/">
+          <img
+            src="/logoNho2.png"
+            width={300}
+            height={300}
+            alt="singitronic logo"
+            className="relative right-5 max-[1023px]:w-56"
+          />
+        </Link>
+        <nav className={`flex gap-x-10 items-center ${menuOpen ? 'flex-col' : 'hidden'} lg:flex`}>
+          <Link href="/" className="menu-item">Home</Link>
+          <Link href="/shop" className="menu-item">Shop</Link>
+          <Link href="/category" className="menu-item">Category</Link>
+          <Link href="/profile" className="menu-item">Profile</Link>
+        </nav>
+        <button className="lg:hidden z-50" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
       )}
       {pathname.startsWith("/admin") === true && (
         <div className="flex justify-between h-32 bg-white items-center px-16 max-[1320px]:px-10  max-w-screen-2xl mx-auto max-[400px]:px-5">
