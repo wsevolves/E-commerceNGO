@@ -46,7 +46,7 @@ const   CategoryMenu = () => {
   return (
     <div className="py-10 bg-gradient-to-l from-white">
       <h2 className="text-cyan-600 text-5xl font-extrabold text-center mb-2 max-md:text-5xl max-[480px]:text-3xl">
-        BROWSE <span className="text-orange-600">NGO'S</span>
+        BROWSE <span className="text-orange-600">NGO&apos;S</span>
       </h2>
       <div className="max-w-screen-2xl mx-auto py-10 gap-x-5 px-16 max-md:px-10 gap-y-5 grid grid-cols-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-[450px]:grid-cols-1">
       {categories.map((item) => (

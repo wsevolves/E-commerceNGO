@@ -61,7 +61,7 @@ const Hero = () => {
           <p className="mb-2">
             Our NGO is dedicated to improving lives through various initiatives,
             including education, healthcare, and community development. By
-            supporting us, you're helping to create sustainable change and bring
+            supporting us, you&apos;re helping to create sustainable change and bring
             smiles to many faces.
           </p>
           <p>
