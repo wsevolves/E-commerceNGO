@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import prisma from "@/utils/db";
 import { AdapterUser } from "next-auth/adapters";
+import { NextApiRequest, NextApiResponse } from "next";
 
 // Define the auth options with the correct types
  const authOptions: NextAuthOptions = {
@@ -49,18 +50,9 @@ import { AdapterUser } from "next-auth/adapters";
     // }),
   ],
   callbacks: {
-    async signIn({ account }: {
-      user: AuthUser | AdapterUser;
-      account?: Account;
-      profile?: Profile;
-      email?: { verificationRequest?: boolean };
-      credentials?: Record<"email" | "password", string>;
-    }) {
-      if (account?.provider === "credentials") {
-        return true;
-      }
-      return false;
-    },
+    async signIn() {
+      return true; 
+    },    
   },
 };
     // async signIn({ user, account }: { user: AuthUser; account: Account }) {
@@ -89,10 +81,5 @@ import { AdapterUser } from "next-auth/adapters";
 
 
 // Define the handler using NextRequest and NextResponse
-const authHandler = async (req: NextRequest) => {
-  const res = NextResponse.next();
-  await NextAuth(req, res, authOptions);
-  return res;
-};
-
+const authHandler =  NextAuth( authOptions);
 export { authHandler as GET, authHandler as POST };

@@ -23,7 +23,6 @@ const SingleProductDynamicFields = ({ product }: { product: Product }) => {
           />
            <WhatsAppButton
             product={product}
-            quantityCount={quantityCount}
           />
         </div>
       )}
