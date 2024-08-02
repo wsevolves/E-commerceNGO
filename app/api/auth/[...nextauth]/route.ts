@@ -7,7 +7,7 @@ import { AdapterUser } from "next-auth/adapters";
 import { NextApiRequest, NextApiResponse } from "next";
 
 // Define the auth options with the correct types
- const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -51,10 +51,8 @@ import { NextApiRequest, NextApiResponse } from "next";
   ],
   callbacks: {
     async signIn() {
-      return true; 
-    },    
-  },
-};
+      return false; 
+    },
     // async signIn({ user, account }: { user: AuthUser; account: Account }) {
     //   if (account?.provider == "credentials") {
     //     return true;
@@ -79,8 +77,14 @@ import { NextApiRequest, NextApiResponse } from "next";
     //   // },
     
     // },
+<<<<<<< HEAD
     secret: process.env.NEXTAUTH_SECRET
+=======
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
+>>>>>>> ab4e67589f62e4277edf8553ae831c4642a8d19e
 
 // Define the handler using NextRequest and NextResponse
-const authHandler =  NextAuth( authOptions);
+const authHandler = NextAuth(authOptions);
 export { authHandler as GET, authHandler as POST };

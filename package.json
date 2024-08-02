@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "dev": "next dev", 
     "build": "next build && prisma generate",
+=======
+    "dev": "next dev",
+    "build": "next build  && prisma generate",
+>>>>>>> ab4e67589f62e4277edf8553ae831c4642a8d19e
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
