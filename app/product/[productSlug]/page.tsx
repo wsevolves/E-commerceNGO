@@ -22,12 +22,12 @@ interface ImageItem {
 
 const SingleProductPage = async ({ params }: SingleProductPageProps) => {
   const data = await fetch(
-    `http://localhost:3001/api/slugs/${params.productSlug}`
+    `https://ngo-server-xyum.onrender.com/api/slugs/${params.productSlug}`
   );
   const product = await data.json();
 
   const imagesData = await fetch(
-    `http://localhost:3001/api/images/${product.id}`
+    `https://ngo-server-xyum.onrender.com/api/images/${product.id}`
   );
   const images = await imagesData.json();
 

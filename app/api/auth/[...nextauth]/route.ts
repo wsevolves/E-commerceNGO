@@ -76,9 +76,10 @@ import { NextApiRequest, NextApiResponse } from "next";
     //   //     console.log("Error saving user", err);
     //   //     return false;
     //   //   }
-    //   // }
+    //   // },
+    
     // },
-
+    secret: process.env.NEXTAUTH_SECRET
 
 // Define the handler using NextRequest and NextResponse
 const authHandler =  NextAuth( authOptions);
